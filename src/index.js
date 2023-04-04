@@ -13,8 +13,10 @@ import {
   //ViewPagerAndroid,
   Platform,
   ActivityIndicator,
-  ViewPropTypes,
+  //ViewPropTypes,
 } from 'react-native'
+
+import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 
 import PagerView from 'react-native-pager-view';
 
