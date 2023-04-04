@@ -169,12 +169,20 @@ export default class extends Component {
   autoplayTimer = null
   loopJumpTimer = null
 
-  componentWillReceiveProps (nextProps) {
-    const sizeChanged = (nextProps.width || width) !== this.state.width ||
+  // componentWillReceiveProps (nextProps) {
+  //   const sizeChanged = (nextProps.width || width) !== this.state.width ||
+  //                       (nextProps.height || height) !== this.state.height
+  //   if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
+  //   this.setState(this.initState(nextProps, sizeChanged))
+  //}
+
+  componentDidUpdate(nextProps, prevState) {
+     const sizeChanged = (nextProps.width || width) !== this.state.width ||
                         (nextProps.height || height) !== this.state.height
     if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
     this.setState(this.initState(nextProps, sizeChanged))
   }
+
 
   componentDidMount () {
     this.autoplay()
