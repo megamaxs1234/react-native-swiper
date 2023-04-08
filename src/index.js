@@ -407,10 +407,16 @@ export default class extends Component {
     if (state.dir === 'x') x = diff * state.width
     if (state.dir === 'y') y = diff * state.height
 
+    // if (Platform.OS === 'android') {
+    //   this.refs.scrollView && this.refs.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff)
+    // } else {
+    //   this.refs.scrollView && this.refs.scrollView.scrollTo({ x, y, animated })
+    // }
     if (Platform.OS === 'android') {
       this.refs.scrollView && this.refs.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff)
     } else {
-      this.refs.scrollView && this.refs.scrollView.scrollTo({ x, y, animated })
+      this.refs.scrollView && this.refs.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff)
+      //this.refs.scrollView && this.refs.scrollView.scrollTo({ x, y, animated })
     }
 
     // update scroll state
