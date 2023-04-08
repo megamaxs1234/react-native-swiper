@@ -169,19 +169,19 @@ export default class extends Component {
   autoplayTimer = null
   loopJumpTimer = null
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     const sizeChanged = (nextProps.width || width) !== this.state.width ||
                         (nextProps.height || height) !== this.state.height
     if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
     this.setState(this.initState(nextProps, sizeChanged))
   }
 
-  // componentDidUpdate(nextProps, prevState) {
-  //    const sizeChanged = (nextProps.width || width) !== this.state.width ||
-  //                       (nextProps.height || height) !== this.state.height
-  //   if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
-  //   this.setState(this.initState(nextProps, sizeChanged))
-  // }
+  //componentDidUpdate(nextProps, prevState) {
+    //  const sizeChanged = (nextProps.width || width) !== this.state.width ||
+    //                     (nextProps.height || height) !== this.state.height
+    //if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
+  //  this.setState(this.initState(nextProps, sizeChanged))
+ // }
 
 
   componentDidMount () {
@@ -559,20 +559,23 @@ export default class extends Component {
   }
 
   renderScrollView = pages => {
-    if (Platform.OS === 'ios') {
-      return (
-        <ScrollView ref='scrollView'
-          {...this.props}
-          {...this.scrollViewPropOverrides()}
-          contentContainerStyle={[styles.wrapper, this.props.style]}
-          contentOffset={this.state.offset}
-          onScrollBeginDrag={this.onScrollBegin}
-          onMomentumScrollEnd={this.onScrollEnd}
-          onScrollEndDrag={this.onScrollEndDrag}>
-          {pages}
-        </ScrollView>
-       )
-    }
+    //pages=pages.reverse();
+
+    // if (Platform.OS === 'ios') {
+    //   return (
+    //     <ScrollView ref='scrollView'
+    //       {...this.props}
+    //       {...this.scrollViewPropOverrides()}
+    //       contentContainerStyle={[styles.wrapper, this.props.style]}
+    //       contentOffset={this.state.offset}
+    //       onScrollBeginDrag={this.onScrollBegin}
+    //       onMomentumScrollEnd={this.onScrollEnd}
+    //       onScrollEndDrag={this.onScrollEndDrag}>
+    //       {pages}
+    //     </ScrollView>
+    //    )
+    // }
+    
     return (
       <PagerView ref='scrollView'
         {...this.props}
